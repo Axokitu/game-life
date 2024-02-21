@@ -1,25 +1,6 @@
-import pygame
-
-pygame.init()
 
 
-def zoom_in():
-    print("Scrolled up")
-
-def zoom_out():
-    print("Scrolled down")
+a = [[2, 2], [2, 1], [1, 2], [0, 0], [0, 1], [1, 0], [2, 0], [0, 2], [2, 4], [2, 3], [1, 4], [0, 2], [0, 3], [1, 2], [2, 2], [0, 4], [4, 2], [4, 1], [3, 2], [2, 0], [2, 1], [3, 0], [4, 0], [2, 2], [4, 4], [4, 3], [3, 4], [2, 2], [2, 3], [3, 2], [4, 2], [2, 4]]
 
 
-pygame.display.set_caption("Zoom Zoom")
-screen = pygame.display.set_mode((750, 750))
-
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 4:
-                zoom_in()
-            elif event.button == 5:
-                zoom_out()
-    pygame.display.flip()
+print(a.count([2, 2]))

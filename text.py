@@ -1,14 +1,35 @@
-# Création d'une liste de test
-ma_liste = [3, 4, 5]
+from collections import Counter
 
-# Parcours de la liste
-for i in range(len(ma_liste)):
-    if ma_liste[i] == 1:
-        del ma_liste[i]  # Suppression de l'élément
-        break  # Sortir de la boucle pour éviter les erreurs d'indexation après la suppression
+# Votre liste d'entrée
+liste = [[2, 2], [2, 1], [1, 2], [0, 0], [0, 1], [1, 0], [2, 0], [0, 2], [2, 4], [2, 3], [1, 4], [0, 2], [0, 3], [1, 2], [2, 2], [0, 4], [4, 2], [4, 1], [3, 2], [2, 0], [2, 1], [3, 0], [4, 0], [2, 2], [4, 4], [4, 3], [3, 4], [2, 2], [2, 3], [3, 2], [4, 2], [2, 4]]
 
-# Ajout de 1 à la liste
-else:
-    ma_liste.append(1)
+# Compter les occurrences de chaque élément dans la liste
+compteur = Counter(tuple(element) for element in liste)
 
-print(ma_liste)
+# Filtrer les éléments répétés trois fois
+resultat = [list(element) for element, count in compteur.items() if count > 3]
+
+print(resultat)
+
+def compter_occurrences(liste):
+    occurrences = {}
+    for element in liste:
+        key = tuple(element)
+        occurrences[key] = occurrences.get(key, 0) + 1
+    return occurrences
+
+def filtrer_elements_repetes(liste, repetition):
+    occurrences = compter_occurrences(liste)
+    resultats = []
+    for element, count in occurrences.items():
+        if count == repetition:
+            resultats.append(list(element))
+    return resultats
+
+# Votre liste d'entrée
+liste = [[2, 2], [2, 1], [1, 2], [0, 0], [0, 1], [1, 0], [2, 0], [0, 2], [2, 4], [2, 3], [1, 4], [0, 2], [0, 3], [1, 2], [2, 2], [0, 4], [4, 2], [4, 1], [3, 2], [2, 0], [2, 1], [3, 0], [4, 0], [2, 2], [4, 4], [4, 3], [3, 4], [2, 2], [2, 3], [3, 2], [4, 2], [2, 4]]
+
+# Filtrer les éléments répétés trois fois
+resultat = filtrer_elements_repetes(liste, 4)
+
+print(resultat)
